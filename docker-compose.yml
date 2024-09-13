@@ -4,9 +4,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: techbranch/frontend
     ports:
-      - 3000:3000
-    volumes:
-      - ./:/usr/src/app
-    command: npm start
+      - 80:80
