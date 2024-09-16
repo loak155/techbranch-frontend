@@ -20,8 +20,6 @@ export const usePreSignup = () => {
       password: password,
     };
 
-    console.log(axios.defaults.baseURL);
-
     axios
       .post<User>(`signup`, JSON.stringify(body))
       .then(async (res) => {
@@ -34,8 +32,6 @@ export const usePreSignup = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
-
         if (err.response.data.message.includes("duplicate key value violates unique constraint")) {
           showMessage({ title: "すでに登録済みです", status: "error" });
         } else {
