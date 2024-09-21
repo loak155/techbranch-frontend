@@ -33,33 +33,37 @@ export const Home: FC = memo(() => {
         </Center>
       ) : (
         <HeaderLayout>
-          <Wrap spacing={5} marginTop={5}>
-            {articles.map((article) => (
-              <WrapItem key={article.id} mx="auto">
-                <ArticleCard
-                  id={article.id}
-                  title={article.title}
-                  url={article.url}
-                  image={article.image}
-                  onClick={() => {}}
-                />
-              </WrapItem>
-            ))}
-          </Wrap>
-          <div className="pagination-container">
-          <ReactPaginate
-            pageCount={Math.ceil(articleCount / 12)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={1}
-            previousLabel={"<"}
-            nextLabel={">"}
-            breakLabel={"..."}
-            forcePage={page-1}
-            onPageChange={onPageChange}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
-          </div>
+          {articles[0] && (
+            <div>
+              <Wrap spacing={5} marginTop={5}>
+                {articles.map((article) => (
+                  <WrapItem key={article.id} mx="auto">
+                    <ArticleCard
+                      id={article.id}
+                      title={article.title}
+                      url={article.url}
+                      image={article.image}
+                      onClick={() => {}}
+                    />
+                  </WrapItem>
+                ))}
+              </Wrap>
+              <div className="pagination-container">
+              <ReactPaginate
+                pageCount={Math.ceil(articleCount / 12)}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
+                previousLabel={"<"}
+                nextLabel={">"}
+                breakLabel={"..."}
+                forcePage={page-1}
+                onPageChange={onPageChange}
+                containerClassName={"pagination"}
+                activeClassName={"active"}
+              />
+              </div>
+            </div>
+          )}
         </HeaderLayout>
       )}
     </>

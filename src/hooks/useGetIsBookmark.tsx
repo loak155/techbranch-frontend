@@ -25,7 +25,11 @@ export const useGetIsBookmark = () => {
     await axios
     .get(`/users/${userId}/bookmarks`, header)
     .then((res) => {
-      setIsBookmark(res.data.bookmarks.some((bookmark: Bookmark) => bookmark.article_id === articleId));
+      if (res.data.bookmarks) {
+        setIsBookmark(res.data.bookmarks.some((bookmark: Bookmark) => bookmark.article_id === articleId));
+      } else {
+        setIsBookmark(false);
+      }
     })
     .catch((err) => {
       showMessage({ title: "ブックマークの取得に失敗しました", status: "error" })

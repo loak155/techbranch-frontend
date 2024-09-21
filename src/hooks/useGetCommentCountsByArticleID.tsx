@@ -15,7 +15,11 @@ export const useGetCommentCountsByArticleID = () => {
     await axios
       .get(`/articles/${articleId}/comments`)
       .then((res) => {
-        setCommentCounts(res.data.comments.length)
+        if (!res.data.comments) {
+          setCommentCounts(0)
+        } else {
+          setCommentCounts(res.data.comments.length)
+        }
       })
       .catch((err) => {
         showMessage({ title: "コメントの取得に失敗しました", status: "error" })

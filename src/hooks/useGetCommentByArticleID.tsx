@@ -16,7 +16,11 @@ export const useGetCommentByArticleID = () => {
     await axios
       .get(`/articles/${articleId}/comments`)
       .then((res) => {
-        setComments(res.data.comments);
+        if (!res.data.comments) {
+          setComments([]);
+        } else {
+          setComments(res.data.comments);
+        }
       })
       .catch((err) => {
         showMessage({ title: "コメントの取得に失敗しました", status: "error" })

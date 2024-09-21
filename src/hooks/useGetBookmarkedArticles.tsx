@@ -27,7 +27,11 @@ export const useGetBookmarkedArticles = () => {
     await axios
       .get(`users/${userId}/bookmarks/articles`, header)
       .then((res) => {
-        setArticles(res.data.articles)
+        if (!res.data.articles) {
+          setArticles([])
+        } else {
+          setArticles(res.data.articles)
+        }
       })
       .catch((err) => {
         showMessage({ title: "記事の取得に失敗しました", status: "error" })

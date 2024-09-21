@@ -26,7 +26,8 @@ export const Bookmark: FC = memo(() => {
         </Center>
       ) : (
         <HeaderLayout>
-          <Wrap spacing={5} marginTop={5}>
+          {articles[0] && (
+            <Wrap spacing={5} marginTop={5}>
             {articles.map((article) => (
               <WrapItem key={article.id} mx="auto">
                 <ArticleCard
@@ -38,7 +39,8 @@ export const Bookmark: FC = memo(() => {
                 />
               </WrapItem>
             ))}
-          </Wrap>
+            </Wrap>
+          )}
         </HeaderLayout>
       )}
     </>

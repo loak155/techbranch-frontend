@@ -15,7 +15,11 @@ export const useGetBookmarkCountsByArticleID = () => {
     await axios
       .get(`/articles/${articleId}/bookmarks`)
       .then((res) => {
-        setBookmarkCounts(res.data.bookmarks.length)
+        if (!res.data.bookmarks) {
+          setBookmarkCounts(0)
+        } else {
+          setBookmarkCounts(res.data.bookmarks.length)
+        }
       })
       .catch((err) => {
         showMessage({ title: "ブックマークの取得に失敗しました", status: "error" })
