@@ -33,7 +33,7 @@ export const Home: FC = memo(() => {
         </Center>
       ) : (
         <HeaderLayout>
-          {articles[0] && (
+          {articles && (
             <div>
               <Wrap spacing={5} marginTop={5}>
                 {articles.map((article) => (
