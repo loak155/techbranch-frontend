@@ -40,7 +40,8 @@ export const useGoogleLoginCallback = () => {
         }
         history.push("/");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log("googleLoginCallbackErr", err);
         showMessage({ title: "ログインに失敗しました", status: "error" });
         setLoading(false);
         history.push("/login");
