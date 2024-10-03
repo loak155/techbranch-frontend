@@ -31,9 +31,12 @@ export const useGoogleLoginCallback = () => {
       .then(async (res) => {
         console.log("googleLoginCallbackRes", res);
         if (res.data) {
-          const payload = jwtDecode<AuthJwtPayload>(res.data.token);
-          setCookie("token", res.data.token, { expires: new Date(payload.exp * 1000) });
-          setCookie("userId", payload.userId, { expires: new Date(payload.exp * 1000) });
+          var accessTokenExpires = new Date();
+          var refreshTokenExpires  = new Date();
+          accessTokenExpires.setSeconds(accessTokenExpires.getSeconds() + res.data.access_token_expires_in);
+          refreshTokenExpires.setSeconds(refreshTokenExpires.getSeconds() + res.data.refresh_token_expires_in);
+          setCookie("accessToken", res.data.access_token, { expires: accessTokenExpires });
+          setCookie("refreshToken", res.data.refresh_token, { expires: refreshTokenExpires });
           showMessage({ title: "ログインしました", status: "success" });
         } else {
           showMessage({ title: "ログインに失敗しました", status: "error" });
@@ -42,7 +45,6 @@ export const useGoogleLoginCallback = () => {
         history.push("/");
       })
       .catch((err) => {
-        console.log("googleLoginCallbackErr", err);
         showMessage({ title: "ログインに失敗しました", status: "error" });
         setLoading(false);
         history.push("/login");
