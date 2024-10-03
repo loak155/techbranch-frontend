@@ -29,6 +29,7 @@ export const useGoogleLoginCallback = () => {
     axios
       .get(`/oauth/google/callback`, { params: params })
       .then(async (res) => {
+        console.log("googleLoginCallbackRes", res);
         if (res.data) {
           const payload = jwtDecode<AuthJwtPayload>(res.data.token);
           setCookie("token", res.data.token, { expires: new Date(payload.exp * 1000) });
