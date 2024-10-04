@@ -29,7 +29,6 @@ export const useGoogleLoginCallback = () => {
     axios
       .get(`/oauth/google/callback`, { params: params })
       .then(async (res) => {
-        console.log("googleLoginCallbackRes", res);
         if (res.data) {
           var accessTokenExpires = new Date();
           var refreshTokenExpires  = new Date();
