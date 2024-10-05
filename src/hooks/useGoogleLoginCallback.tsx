@@ -21,11 +21,6 @@ export const useGoogleLoginCallback = () => {
       code: code,
     };
 
-    interface AuthJwtPayload extends JwtPayload {
-      userId: number;
-      exp: number;
-    }
-
     axios
       .get(`/oauth/google/callback`, { params: params })
       .then(async (res) => {
