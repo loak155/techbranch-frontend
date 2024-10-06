@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# techbranch-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 使用技術
 
-## Available Scripts
+<img src="https://img.shields.io/badge/-TypeScript-silver.svg?logo=typescript">
+<img src="https://img.shields.io/badge/-React-silver.svg?logo=react">
+<img src="https://img.shields.io/badge/-Docker-silver.svg?logo=docker">
+<img src="https://img.shields.io/badge/-GitHub Actions-silver.svg?logo=githubactions">
 
-In the project directory, you can run:
+## 機能概要
 
-### `npm start`
+- サインアップ
+  - 登録後、ユーザ認証のメール送信する
+  - メールでの URL リンクから認証すると本登録する
+- ログイン
+  - Email・パスワードでのログインする
+  - Google アカウントでのログインする
+- 記事一覧
+  - 記事の一覧を表示する
+  - 記事をクリックすると記事本文へ遷移する
+- ブックマーク
+  - ブックマークを登録する
+  - ブックマークを削除する
+  - ブックマーク一覧からブックマークした記事の一覧を表示する
+- コメント
+  - コメントを登録する
+  - コメントを表示する
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## セットアップ
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 環境変数の設定
 
-### `npm test`
+`.env.production`ファイルを作成し、API のエンドポイントや他の環境変数を設定します。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text:.env.production
+REACT_APP_API_BASE_URL=https://api.techbranch.link/v1
+```
 
-### `npm run build`
+### Docker イメージの作成と起動
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash:
+$ docker compose up --build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+http://localhost:80 にアクセスできます。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Docker を使用しない場合
 
-### `npm run eject`
+```bash:
+# 依存関係のインストール
+$ npm install
+# アプリケーションの起動
+$ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+http://localhost:3000 にアクセスできます。
