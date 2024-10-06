@@ -2,10 +2,12 @@
 
 ## 使用技術
 
+<p>
 <img src="https://img.shields.io/badge/-TypeScript-silver.svg?logo=typescript">
 <img src="https://img.shields.io/badge/-React-silver.svg?logo=react">
 <img src="https://img.shields.io/badge/-Docker-silver.svg?logo=docker">
 <img src="https://img.shields.io/badge/-GitHub Actions-silver.svg?logo=githubactions">
+</p>
 
 ## 機能概要
 
